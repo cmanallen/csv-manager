@@ -62,7 +62,3 @@ class CsvToObject(object):
 			column_object[j] = column
 
 		return column_object
-
-
-test = CsvToObject(open('example.txt'), True).convert()
-print(test)
