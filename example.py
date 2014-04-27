@@ -1,7 +1,5 @@
 from csv_to_object import *
 
-heading_test = CsvToObject(open('example.txt'), True).convert()
-print(heading_test)
-
-no_heading = CsvToObject(open('example.txt'), False).convert()
-print(no_heading)
+dataset = CsvToObject(open('example.csv'), True).convert()
+for key, value in dataset.items():
+	print(value['Close'])
