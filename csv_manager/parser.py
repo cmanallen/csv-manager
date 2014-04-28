@@ -4,8 +4,12 @@ class CsvToObject(object):
 		self.csv = csv
 		self.heading = heading
 
-	def convert(self):
-		rows = self.csv.read().split('\n')
+	def parse(self):
+		loaded_file = open(self.csv).read()
+		return self._file_to_object(loaded_file)
+
+	def _file_to_object(self, csv):
+		rows = csv.split('\n')
 		row_object = {}
 		
 		if self.heading:

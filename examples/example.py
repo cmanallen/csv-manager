@@ -1,5 +1,8 @@
 from csv_manager.parser import CsvToObject
 
-dataset = CsvToObject(open('example.csv'), True).convert()
-for key, value in dataset.items():
-	print(value)
+dataset = CsvToObject('example.csv', True).parse()
+# for key, value in dataset.items():
+	# print(value)
+
+for key, item in dataset.items():
+	print(item['Date'])
