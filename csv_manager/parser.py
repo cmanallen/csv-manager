@@ -43,12 +43,12 @@ class CsvToObject(object):
 
 			elif not escaped and character == ',':
 				column = ''.join(character_stack)
-				character_stack[:] = []
-
 				if head is not None:
 					column_object[head[j]] = column
 				else:
 					column_object[j] = column
+				
+				character_stack = []
 
 				j += 1
 
@@ -59,7 +59,6 @@ class CsvToObject(object):
 				character_stack.append(character)
 
 		column = ''.join(character_stack)
-
 		if head is not None:
 			column_object[head[j]] = column
 		else:
