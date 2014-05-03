@@ -4,8 +4,12 @@ class CsvToObject(object):
 		self.csv = csv
 		self.heading = heading
 
-	def convert(self):
-		rows = self.csv.read().split('\n')
+	def parse(self):
+		loaded_file = open(self.csv).read()
+		return self._file_to_object(loaded_file)
+
+	def _file_to_object(self, csv):
+		rows = csv.split('\n')
 		row_object = {}
 		
 		if self.heading:
@@ -24,17 +28,17 @@ class CsvToObject(object):
 	def _string_to_object(self, string, head):
 		column_object = {}
 
-		escaped = []
+		escaped = False
 		character_stack = []
 
 		j = 0
 		for character in string:
 			if not escaped and character == '"':
-				escaped.append(character)
+				escaped = True
 				character_stack.append(character)
 
 			elif escaped and character == '"':
-				escaped.pop()
+				escaped = False
 				character_stack.append(character)
 
 			elif not escaped and character == ',':

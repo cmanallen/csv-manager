@@ -28,17 +28,17 @@ class CsvToObject(object):
 	def _string_to_object(self, string, head):
 		column_object = {}
 
-		escaped = []
+		escaped = False
 		character_stack = []
 
 		j = 0
 		for character in string:
 			if not escaped and character == '"':
-				escaped.append(character)
+				escaped = True
 				character_stack.append(character)
 
 			elif escaped and character == '"':
-				escaped.pop()
+				escaped = False
 				character_stack.append(character)
 
 			elif not escaped and character == ',':

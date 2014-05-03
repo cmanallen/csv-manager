@@ -5,4 +5,4 @@ dataset = CsvToObject('example.csv', True).parse()
 	# print(value)
 
 for key, item in dataset.items():
-	print(item['Date'])
+	print(item)
