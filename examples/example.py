@@ -1,6 +1,8 @@
-from csv_manager.parser import CsvToObject
+from csv_manager.parser import Parser
+from csv_manager.writer import Writer
 
-dataset = CsvToObject('example.csv', True).parse()
+dataset = Parser('example.csv', True).parse()
+csv_file = Writer(dataset, True).write('myfile')
 
-for key, item in dataset.items():
-	print(item)
+
+print(csv_file)
